@@ -1,0 +1,51 @@
+locale: "en-US"
+title: Shipu Wang # Title of your site
+url: "https://shipuw.github.io/" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog/
+google_analytics_key: "UA-78698074-1"
+
+# Default description in social shares for the jekyll-seo-tag gem
+description: > # this means to ignore newlines until "baseurl:"
+  Welcome to My Website
+  Shipu Wang
+
+# Author details for the jekyll-seo-tag gem
+author:
+  name: Shipu Wang
+  email: shipu.wsp@gmail.com
+  twitter: # twitter username without the @ symbol
+
+# Social details for the jekyll-seo-tag gem
+social:
+  name: Github
+  links:
+    - https://github.com/ShipuW
+
+permalink: pretty
+
+gems:
+  - "jekyll-feed"
+  - "jekyll-seo-tag"
+  - "jekyll-paginate"
+  - "jekyll-sitemap"
+
+# Jekyll SEO Tag
+webmaster_verifications:
+  google: # 1234
+  bing: # 1234
+  alexa: # 1234
+  yandex: # 1234
+
+# -----------
+# CloudCannon
+
+social_icons:
+  - Facebook
+  - Google Plus
+  - Instagram
+  - LinkedIn
+  - Pinterest
+  - Tumblr
+  - Twitter
+  - YouTube
+  - RSS

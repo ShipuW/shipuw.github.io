@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shipu Wang</title>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+		  (adsbygoogle = window.adsbygoogle || []).push({
+		    google_ad_client: "ca-pub-6186255399067572",
+		    enable_page_level_ads: true
+		  });
+		</script>
+		
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Shipu Wang">
+		<meta name="description" content="Welcome to My Website Shipu Wang
+">
+		<meta http-equiv="content-language" content="en-US" />
+		<meta name="generator" content="Jekyll v3.3.1">
+
+		<!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="/css/main.css">
+		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/touch-icon.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Shipu Wang - Welcome to My Website Shipu Wang</title>
+<meta property="og:title" content="Shipu Wang" />
+<meta name="description" content="Welcome to My Website Shipu Wang" />
+<meta property="og:description" content="Welcome to My Website Shipu Wang" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="Shipu Wang" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "WebSite",
+"name": "Github",
+"headline": "Shipu Wang",
+"description": "Welcome to My Website Shipu Wang",
+"sameAs": ["https://github.com/ShipuW"],
+"url": "http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Shipu Wang" />
+
+	</head>
+
+	<body id="top">
+    <header id="header">
+      <a href="http://localhost:4000" class="image avatar"><img class="editable" src="/images/avatar.jpg" alt="Shipu Wang"></a>
+      <h1 class="editable"><strong>I am <a href="/">Shipu Wang</a></strong>, full-stack developer<br>
+      graduate student in USC<br>
+      intern in <a href="http://www.ppl.network/">ppl, Inc</a>.</h1>
+    </header>
+
+    <div id="main">
+  <section>
+    
+      <header>
+        <h1>JAVA Generics</h1>
+        <p class="post-meta">Jun 4, 2016</p>
+      </header>
+      <section>
+        <p>In JAVA, the default type of elements in a list is <strong>Object</strong>. So when we take out elements in the list, there may exists java.lang.ClassCastException situation. Then, the JAVA Generics are introduced in our program.</p>
+
+<!--more-->
+
+<h1 id="java-generics">JAVA Generics</h1>
+
+<p>Complie Error in Program:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public class GenericTest {
+
+    public static void main(String[] args) {
+        /*
+        List list = new ArrayList();
+        list.add("qqyumidi");
+        list.add("corn");
+        list.add(100);
+        */
+
+        List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+        list.add("qqyumidi");
+        list.add("corn");
+        //list.add(100);   //COMPILE ERROR
+
+        for (int i = 0; i &lt; list.size(); i++) {
+            String name = list.get(i); // Get String Type
+            System.out.println("name:" + name);
+        }
+    }
+}
+</code></pre>
+</div>
+
+<h2 id="what-is-java-generics">What is JAVA Generics?</h2>
+
+<p>After Java SE 1.5, Generics is introduced to solve the random parameters. In List<E>, List<String> and List, List<E> is parameterized type. E in (formal) type parameter. String is actual type argument. List is raw type.</E></String></E></p>
+
+<h2 id="list-interface">List Interface</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>public interface List&lt;E&gt; extends Collection&lt;E&gt; {
+
+    int size();
+
+    boolean isEmpty();
+
+    boolean contains(Object o);
+
+    Iterator&lt;E&gt; iterator();
+
+    Object[] toArray();
+
+    &lt;T&gt; T[] toArray(T[] a);
+
+    boolean add(E e);
+
+    boolean remove(Object o);
+
+    boolean containsAll(Collection&lt;?&gt; c);
+
+    boolean addAll(Collection&lt;? extends E&gt; c);
+
+    boolean addAll(int index, Collection&lt;? extends E&gt; c);
+
+    boolean removeAll(Collection&lt;?&gt; c);
+
+    boolean retainAll(Collection&lt;?&gt; c);
+
+    void clear();
+
+    boolean equals(Object o);
+
+    int hashCode();
+
+    E get(int index);
+
+    E set(int index, E element);
+
+    void add(int index, E element);
+
+    E remove(int index);
+
+    int indexOf(Object o);
+
+    int lastIndexOf(Object o);
+
+    ListIterator&lt;E&gt; listIterator();
+
+    ListIterator&lt;E&gt; listIterator(int index);
+
+    List&lt;E&gt; subList(int fromIndex, int toIndex);
+
+}
+</code></pre>
+</div>
+
+<p>In the defination, E in <E> is formal parameter. Every E in this interface can receive actual parameter from external.</E></p>
+
+<h2 id="generic-interfaces-classes-methods">Generic Interfaces, Classes, Methods</h2>
+
+<p>A simple defination.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class Box&lt;T&gt; {
+
+    private T data;
+
+    public Box() {
+
+    }
+
+    public Box(T data) {
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+	public void showType() {
+		System.out.println("Actual type:" + data.getClass().getName());
+	}
+
+}
+
+public class GenericTest {
+
+    public static void main(String[] args) {
+
+        Box&lt;String&gt; name = new Box&lt;String&gt;("corn");
+        Box&lt;Integer&gt; age = new Box&lt;Integer&gt;(712);
+		
+		name.showType();	//java.lang.String
+        System.out.println("name class:" + name.getClass());      // com.test.Box
+		
+		age.showType();		//java.lang.Integer
+        System.out.println("age class:" + age.getClass());        // com.test.Box
+
+        System.out.println(name.getClass() == age.getClass());    // true
+
+    }
+
+}
+</code></pre>
+</div>
+
+<p>We can notice a fact in this case. Although Generics types are seemingly to be different types in logic, they are actually same type.</p>
+
+<h2 id="follow-up">FOLLOW UP</h2>
+
+<hr />
+
+        <p class="editor-link"><a href="cloudcannon:collections/_posts/2016-06-04-JAVA Generics.markdown" class="button"><strong>&#9998;</strong> Edit post</a></p>
+      </section>
+    
+  </section>
+
+  <section>
+    <div class="row">
+      
+        <article class="6u 12u(small)">
+          <header>
+            <h2><a href="/2016/05/31/AR-Implementation-in-Navigation-System/">AR Implementation in Navigation System</a></h2>
+          </header>
+          <section>
+            <p><img src="/images/fulls/AR.jpg" class="fit image" />
+2016 is the initial year of Virtual Reality. Influenced by the trends, many technical companies devote themselves to the revolution of traditional interaction. Accompanied with the spring of smart devices, data management, data retrieval and algorithm are all enhanced in a stable pace. In another part, with the popularization of smart phones, the cost of technology in life become lower and lower. According to these points, the paper uses the combination of the technology of Augmented Reality and iOS development to realize a simple Augmented Reality on iPhone platform…</p>
+
+
+          </section>
+          <footer>
+            <ul class="actions">
+              <li><a href="/2016/05/31/AR-Implementation-in-Navigation-System/" class="button">Read More</a></li>
+              <li class="editor-link"><a href="cloudcannon:collections/_posts/2016-05-31-AR Implementation in Navigation System.markdown" class="button"><strong>&#9998;</strong> Edit post</a></li>
+            </ul>
+          </footer>
+        </article>
+      
+    </div>
+  </section>
+</div>
+
+
+    <footer id="footer">
+      <p class="editor-link"><a href="cloudcannon:collections/_data/social.yml" class="button"><strong>&#9998;</strong> Update Social Icons</a></p>
+      <ul class="icons">
+        
+					<li>
+						<a target="_blank" href="https://www.facebook.com/ShipuW" class="icon fa-facebook">
+              <span class="label">Facebook</span>
+						</a>
+					</li>
+				
+					<li>
+						<a target="_blank" href="https://www.linkedin.com/in/shipuwang/" class="icon fa-linkedin">
+              <span class="label">LinkedIn</span>
+						</a>
+					</li>
+				
+        
+        <li>
+          <a href="mailto:shipu.wsp@gmail.com" class="icon fa-envelope-o">
+            <span class="label">Email</span>
+          </a>
+        </li>
+        
+      </ul>
+      <ul class="copyright">
+          <li>&copy; Shipu Wang</li>
+      </ul>
+    </footer>
+
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery.poptrox.min.js"></script>
+		<script src="/js/skel.min.js"></script>
+		<script src="/js/util.js"></script>
+		<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+		<script src="/js/main.js"></script>
+
+		
+
+	</body>
+</html>

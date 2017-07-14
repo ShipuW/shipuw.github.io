@@ -1,0 +1,12 @@
+- name: Facebook
+  link: 'https://www.facebook.com/ShipuW'
+  social_icon: Facebook
+  new_window: true
+- name: LinkedIn
+  link: 'https://www.linkedin.com/in/shipuwang/'
+  social_icon: LinkedIn
+  new_window: true
+# - name: RSS
+#   link: '/feed.xml'
+#   social_icon: RSS
+#   new_window: true

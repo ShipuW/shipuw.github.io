@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shipu Wang</title>
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+		  (adsbygoogle = window.adsbygoogle || []).push({
+		    google_ad_client: "ca-pub-6186255399067572",
+		    enable_page_level_ads: true
+		  });
+		</script>
+		
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Shipu Wang">
+		<meta name="description" content="Welcome to My Website Shipu Wang
+">
+		<meta http-equiv="content-language" content="en-US" />
+		<meta name="generator" content="Jekyll v3.3.1">
+
+		<!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="/css/main.css">
+		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/touch-icon.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>AR Implementation in Navigation System - Shipu Wang</title>
+<meta property="og:title" content="AR Implementation in Navigation System" />
+<meta name="description" content="2016 is the initial year of Virtual Reality. Influenced by the trends, many technical companies devote themselves to the revolution of traditional interaction. Accompanied with the spring of smart devices, data management, data retrieval and algorithm are all enhanced in a stable pace. In another part, with the popularization of smart phones, the cost of technology in life become lower and lower. According to these points, the paper uses the combination of the technology of Augmented Reality and iOS development to realize a simple Augmented Reality on iPhone platform…" />
+<meta property="og:description" content="2016 is the initial year of Virtual Reality. Influenced by the trends, many technical companies devote themselves to the revolution of traditional interaction. Accompanied with the spring of smart devices, data management, data retrieval and algorithm are all enhanced in a stable pace. In another part, with the popularization of smart phones, the cost of technology in life become lower and lower. According to these points, the paper uses the combination of the technology of Augmented Reality and iOS development to realize a simple Augmented Reality on iPhone platform…" />
+<link rel="canonical" href="http://localhost:4000/2016/05/31/AR-Implementation-in-Navigation-System/" />
+<meta property="og:url" content="http://localhost:4000/2016/05/31/AR-Implementation-in-Navigation-System/" />
+<meta property="og:site_name" content="Shipu Wang" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-05-31T00:00:00-07:00" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "AR Implementation in Navigation System",
+"datePublished": "2016-05-31T00:00:00-07:00",
+"description": "2016 is the initial year of Virtual Reality. Influenced by the trends, many technical companies devote themselves to the revolution of traditional interaction. Accompanied with the spring of smart devices, data management, data retrieval and algorithm are all enhanced in a stable pace. In another part, with the popularization of smart phones, the cost of technology in life become lower and lower. According to these points, the paper uses the combination of the technology of Augmented Reality and iOS development to realize a simple Augmented Reality on iPhone platform…",
+"url": "http://localhost:4000/2016/05/31/AR-Implementation-in-Navigation-System/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Shipu Wang" />
+
+	</head>
+
+	<body id="top">
+    <header id="header">
+      <a href="http://localhost:4000" class="image avatar"><img class="editable" src="/images/avatar.jpg" alt="Shipu Wang"></a>
+      <h1 class="editable"><strong>I am <a href="/">Shipu Wang</a></strong>, full-stack developer<br>
+      graduate student in USC<br>
+      intern in <a href="http://www.ppl.network/">ppl, Inc</a>.</h1>
+    </header>
+
+    <div id="main">
+  <article>
+    <header>
+      <h1 class="post-title">AR Implementation in Navigation System</h1>
+      <p class="post-meta">May 31, 2016</p>
+    </header>
+
+    <section>
+      <p><img src="/images/fulls/AR.jpg" class="fit image" />
+2016 is the initial year of Virtual Reality. Influenced by the trends, many technical companies devote themselves to the revolution of traditional interaction. Accompanied with the spring of smart devices, data management, data retrieval and algorithm are all enhanced in a stable pace. In another part, with the popularization of smart phones, the cost of technology in life become lower and lower. According to these points, the paper uses the combination of the technology of Augmented Reality and iOS development to realize a simple Augmented Reality on iPhone platform…</p>
+
+<!--more-->
+
+<h1 id="ar-implementation-in-navigation-system">AR Implementation in Navigation System</h1>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<p>Tags: Augmented Reality, Navigation, iOS</p>
+
+<h2 id="intro">Intro</h2>
+
+<p>Through the analysis of demand of current applications and the thought of application area of Augmented Reality, the paper aims at the combination of navigation systems and Augmented Reality. The application based on iOS platform and it can be run on many types of iPhone. The technical proposal mainly contains information retrieval and processing of map, data management of local hardware, merging algorithm of Augmented Reality and searching function. In addition, MOVE design pattern are used in system to improve the quality of source code.</p>
+
+<p>In iOS design part, the system uses the co-processing of data at local device and the server. In view design, the system rewrites the method drawRect to accomplish customized user interface. Apache server is used at the server side and JSON is used as the carrier of transferred data, which has a relatively high efficiency. In Augmented Reality part, the system use Monitor-Based proposal and Location-Based merging algorithm. The system test shows the design reach the standard of accuracy.</p>
+
+<h2 id="merging-algorithm">Merging Algorithm</h2>
+
+<p>In order to merge the virtual mark label into the real environment from the camera. The system need to caculate \( (x,y) \) in device screen based on target location, user location and the posture of device. The simple formula is \( (xInScreen,yInScreen)=f(userLocation,targetLocation,infoPosture) \). Every location contains a latitude info and a longitude info.
+Look the diagram for calculation.</p>
+
+<p>　　　<img src="http://ww3.sinaimg.cn/large/6e302d8bgw1f4f1ng6k89j20ar0b63z2.jpg" alt="Caculation Diagram" /></p>
+
+<p><strong>According to formiula of trihedral angle.</strong></p>
+
+<script type="math/tex; mode=display">\cos(c) = \cos(90-Latitude\_B)\times\cos(90-latitude\_A)+\sin(90-Latitude\_B)\times\sin(90-Latitude\_A)\times\cos(Longitude\_B-Longitude\_A)</script>
+
+<script type="math/tex; mode=display">\sin(c)=\sqrt{1-\cos^2(c)}</script>
+
+<script type="math/tex; mode=display">\frac{a}{\sin(A)}=\frac{b}{\sin(B)}=\frac{c}{\sin(C)}</script>
+
+<p><strong>The direction angle calculation formula.</strong></p>
+
+<script type="math/tex; mode=display">A=\arcsin\frac{\sin(90-Latitude\_B)\times\sin(Longitude\_B-Longitude\_A)}{\sin(c)}</script>
+
+<p><strong>X in Screen.</strong></p>
+
+<p>　　　<img src="http://ww2.sinaimg.cn/large/6e302d8bgw1f4f1tradpbj20g50bmmxc.jpg" alt="X Caculation" /></p>
+
+<script type="math/tex; mode=display">\frac{width}{2\times\tan(\frac{\omega}{2})}=\frac{\frac{width}{2}-tw}{\tan(H-TH)}</script>
+
+<script type="math/tex; mode=display">tw=\frac{1}{2}\times(width-\frac{width\times\tan(H-TH)}{\tan(\frac{\omega}{2})})</script>
+
+<p><strong>Y in Screen.</strong></p>
+
+<p>　　　<img src="http://ww2.sinaimg.cn/large/6e302d8bgw1f4f1u8qozej20la0cf74l.jpg" alt="Y Calculation" /></p>
+
+<script type="math/tex; mode=display">th=\frac{1}{2}\times(height-\frac{height\times GravityX}{\tan(\frac{\omega}{2})\times GravityY})</script>
+
+<p><strong>Implementation Result</strong>
+After setting up APP, the interface shows the effect of merging algorithms.</p>
+
+<p>　　　<img src="http://ww4.sinaimg.cn/large/6e302d8bgw1f4f24jrkf7j20bo0len07.jpg" alt="Result" /></p>
+
+<p>　　　<img src="http://ww3.sinaimg.cn/large/6e302d8bgw1f4f25kw9kwj20bo0leq68.jpg" alt="Result" /></p>
+
+<h2 id="follow-up">FOLLOW UP</h2>
+
+<p>The merging algorithm based on <strong>CLLocation</strong> and <strong>CMMotion</strong>. Data from hardware is needed to pre-process before using. For instance, when the device in a horizontal posture, the data should be modified before calculation.</p>
+
+<hr />
+
+    </section>
+
+    <footer>
+      <div class="row">
+      
+
+      
+        <article class="6u 12u(small) excerpt f-right">
+          <header>
+            <h2><a href="/2016/06/04/JAVA-Generics/">JAVA Generics</a></h2>
+          </header>
+          <section>
+            <p>In JAVA, the default type of elements in a list is <strong>Object</strong>. So when we take out elements in the list, there may exists java.lang.ClassCastException situation. Then, the JAVA Generics are introduced in our program.</p>
+
+
+          </section>
+          <footer>
+            <ul class="actions">
+              <li><a href="/2016/06/04/JAVA-Generics/" class="button">Read More</a></li>
+            </ul>
+          </footer>
+        </article>
+      
+      </div>
+    </footer>
+  </article>
+</div>
+
+
+    <footer id="footer">
+      <p class="editor-link"><a href="cloudcannon:collections/_data/social.yml" class="button"><strong>&#9998;</strong> Update Social Icons</a></p>
+      <ul class="icons">
+        
+					<li>
+						<a target="_blank" href="https://www.facebook.com/ShipuW" class="icon fa-facebook">
+              <span class="label">Facebook</span>
+						</a>
+					</li>
+				
+					<li>
+						<a target="_blank" href="https://www.linkedin.com/in/shipuwang/" class="icon fa-linkedin">
+              <span class="label">LinkedIn</span>
+						</a>
+					</li>
+				
+        
+        <li>
+          <a href="mailto:shipu.wsp@gmail.com" class="icon fa-envelope-o">
+            <span class="label">Email</span>
+          </a>
+        </li>
+        
+      </ul>
+      <ul class="copyright">
+          <li>&copy; Shipu Wang</li>
+      </ul>
+    </footer>
+
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/jquery.poptrox.min.js"></script>
+		<script src="/js/skel.min.js"></script>
+		<script src="/js/util.js"></script>
+		<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+		<script src="/js/main.js"></script>
+
+		
+
+	</body>
+</html>

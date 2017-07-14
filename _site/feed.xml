@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-07-14T01:57:37-07:00</updated><id>http://localhost:4000/</id><title>Shipu Wang</title><subtitle>Welcome to My Website Shipu Wang
+</subtitle><author><name>Shipu Wang</name><email>shipu.wsp@gmail.com</email></author><entry><title>JAVA Generics</title><link href="http://localhost:4000/2016/06/04/JAVA-Generics/" rel="alternate" type="text/html" title="JAVA Generics" /><published>2016-06-04T00:00:00-07:00</published><updated>2016-06-04T00:00:00-07:00</updated><id>http://localhost:4000/2016/06/04/JAVA Generics</id><content type="html" xml:base="http://localhost:4000/2016/06/04/JAVA-Generics/">&lt;p&gt;In JAVA, the default type of elements in a list is &lt;strong&gt;Object&lt;/strong&gt;. So when we take out elements in the list, there may exists java.lang.ClassCastException situation. Then, the JAVA Generics are introduced in our program.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;java-generics&quot;&gt;JAVA Generics&lt;/h1&gt;
+
+&lt;p&gt;Complie Error in Program:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class GenericTest {
+
+    public static void main(String[] args) {
+        /*
+        List list = new ArrayList();
+        list.add(&quot;qqyumidi&quot;);
+        list.add(&quot;corn&quot;);
+        list.add(100);
+        */
+
+        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;();
+        list.add(&quot;qqyumidi&quot;);
+        list.add(&quot;corn&quot;);
+        //list.add(100);   //COMPILE ERROR
+
+        for (int i = 0; i &amp;lt; list.size(); i++) {
+            String name = list.get(i); // Get String Type
+            System.out.println(&quot;name:&quot; + name);
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;what-is-java-generics&quot;&gt;What is JAVA Generics?&lt;/h2&gt;
+
+&lt;p&gt;After Java SE 1.5, Generics is introduced to solve the random parameters. In List&lt;E&gt;, List&lt;String&gt; and List, List&lt;E&gt; is parameterized type. E in (formal) type parameter. String is actual type argument. List is raw type.&lt;/E&gt;&lt;/String&gt;&lt;/E&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;list-interface&quot;&gt;List Interface&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public interface List&amp;lt;E&amp;gt; extends Collection&amp;lt;E&amp;gt; {
+
+    int size();
+
+    boolean isEmpty();
+
+    boolean contains(Object o);
+
+    Iterator&amp;lt;E&amp;gt; iterator();
+
+    Object[] toArray();
+
+    &amp;lt;T&amp;gt; T[] toArray(T[] a);
+
+    boolean add(E e);
+
+    boolean remove(Object o);
+
+    boolean containsAll(Collection&amp;lt;?&amp;gt; c);
+
+    boolean addAll(Collection&amp;lt;? extends E&amp;gt; c);
+
+    boolean addAll(int index, Collection&amp;lt;? extends E&amp;gt; c);
+
+    boolean removeAll(Collection&amp;lt;?&amp;gt; c);
+
+    boolean retainAll(Collection&amp;lt;?&amp;gt; c);
+
+    void clear();
+
+    boolean equals(Object o);
+
+    int hashCode();
+
+    E get(int index);
+
+    E set(int index, E element);
+
+    void add(int index, E element);
+
+    E remove(int index);
+
+    int indexOf(Object o);
+
+    int lastIndexOf(Object o);
+
+    ListIterator&amp;lt;E&amp;gt; listIterator();
+
+    ListIterator&amp;lt;E&amp;gt; listIterator(int index);
+
+    List&amp;lt;E&amp;gt; subList(int fromIndex, int toIndex);
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In the defination, E in &lt;E&gt; is formal parameter. Every E in this interface can receive actual parameter from external.&lt;/E&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;generic-interfaces-classes-methods&quot;&gt;Generic Interfaces, Classes, Methods&lt;/h2&gt;
+
+&lt;p&gt;A simple defination.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Box&amp;lt;T&amp;gt; {
+
+    private T data;
+
+    public Box() {
+
+    }
+
+    public Box(T data) {
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+	public void showType() {
+		System.out.println(&quot;Actual type:&quot; + data.getClass().getName());
+	}
+
+}
+
+public class GenericTest {
+
+    public static void main(String[] args) {
+
+        Box&amp;lt;String&amp;gt; name = new Box&amp;lt;String&amp;gt;(&quot;corn&quot;);
+        Box&amp;lt;Integer&amp;gt; age = new Box&amp;lt;Integer&amp;gt;(712);
+		
+		name.showType();	//java.lang.String
+        System.out.println(&quot;name class:&quot; + name.getClass());      // com.test.Box
+		
+		age.showType();		//java.lang.Integer
+        System.out.println(&quot;age class:&quot; + age.getClass());        // com.test.Box
+
+        System.out.println(name.getClass() == age.getClass());    // true
+
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We can notice a fact in this case. Although Generics types are seemingly to be different types in logic, they are actually same type.&lt;/p&gt;
+
+&lt;h2 id=&quot;follow-up&quot;&gt;FOLLOW UP&lt;/h2&gt;
+
+&lt;hr /&gt;</content><author><name>Shipu Wang</name><email>shipu.wsp@gmail.com</email></author><summary>In JAVA, the default type of elements in a list is Object. So when we take out elements in the list, there may exists java.lang.ClassCastException situation. Then, the JAVA Generics are introduced in our program.</summary></entry><entry><title>AR Implementation in Navigation System</title><link href="http://localhost:4000/2016/05/31/AR-Implementation-in-Navigation-System/" rel="alternate" type="text/html" title="AR Implementation in Navigation System" /><published>2016-05-31T00:00:00-07:00</published><updated>2016-05-31T00:00:00-07:00</updated><id>http://localhost:4000/2016/05/31/AR Implementation in Navigation System</id><content type="html" xml:base="http://localhost:4000/2016/05/31/AR-Implementation-in-Navigation-System/">&lt;p&gt;&lt;img src=&quot;/images/fulls/AR.jpg&quot; class=&quot;fit image&quot; /&gt;
+2016 is the initial year of Virtual Reality. Influenced by the trends, many technical companies devote themselves to the revolution of traditional interaction. Accompanied with the spring of smart devices, data management, data retrieval and algorithm are all enhanced in a stable pace. In another part, with the popularization of smart phones, the cost of technology in life become lower and lower. According to these points, the paper uses the combination of the technology of Augmented Reality and iOS development to realize a simple Augmented Reality on iPhone platform…&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;ar-implementation-in-navigation-system&quot;&gt;AR Implementation in Navigation System&lt;/h1&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Tags: Augmented Reality, Navigation, iOS&lt;/p&gt;
+
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;Through the analysis of demand of current applications and the thought of application area of Augmented Reality, the paper aims at the combination of navigation systems and Augmented Reality. The application based on iOS platform and it can be run on many types of iPhone. The technical proposal mainly contains information retrieval and processing of map, data management of local hardware, merging algorithm of Augmented Reality and searching function. In addition, MOVE design pattern are used in system to improve the quality of source code.&lt;/p&gt;
+
+&lt;p&gt;In iOS design part, the system uses the co-processing of data at local device and the server. In view design, the system rewrites the method drawRect to accomplish customized user interface. Apache server is used at the server side and JSON is used as the carrier of transferred data, which has a relatively high efficiency. In Augmented Reality part, the system use Monitor-Based proposal and Location-Based merging algorithm. The system test shows the design reach the standard of accuracy.&lt;/p&gt;
+
+&lt;h2 id=&quot;merging-algorithm&quot;&gt;Merging Algorithm&lt;/h2&gt;
+
+&lt;p&gt;In order to merge the virtual mark label into the real environment from the camera. The system need to caculate \( (x,y) \) in device screen based on target location, user location and the posture of device. The simple formula is \( (xInScreen,yInScreen)=f(userLocation,targetLocation,infoPosture) \). Every location contains a latitude info and a longitude info.
+Look the diagram for calculation.&lt;/p&gt;
+
+&lt;p&gt;　　　&lt;img src=&quot;http://ww3.sinaimg.cn/large/6e302d8bgw1f4f1ng6k89j20ar0b63z2.jpg&quot; alt=&quot;Caculation Diagram&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;According to formiula of trihedral angle.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\cos(c) = \cos(90-Latitude\_B)\times\cos(90-latitude\_A)+\sin(90-Latitude\_B)\times\sin(90-Latitude\_A)\times\cos(Longitude\_B-Longitude\_A)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sin(c)=\sqrt{1-\cos^2(c)}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{a}{\sin(A)}=\frac{b}{\sin(B)}=\frac{c}{\sin(C)}&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;The direction angle calculation formula.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A=\arcsin\frac{\sin(90-Latitude\_B)\times\sin(Longitude\_B-Longitude\_A)}{\sin(c)}&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;X in Screen.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;　　　&lt;img src=&quot;http://ww2.sinaimg.cn/large/6e302d8bgw1f4f1tradpbj20g50bmmxc.jpg&quot; alt=&quot;X Caculation&quot; /&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{width}{2\times\tan(\frac{\omega}{2})}=\frac{\frac{width}{2}-tw}{\tan(H-TH)}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;tw=\frac{1}{2}\times(width-\frac{width\times\tan(H-TH)}{\tan(\frac{\omega}{2})})&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Y in Screen.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;　　　&lt;img src=&quot;http://ww2.sinaimg.cn/large/6e302d8bgw1f4f1u8qozej20la0cf74l.jpg&quot; alt=&quot;Y Calculation&quot; /&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;th=\frac{1}{2}\times(height-\frac{height\times GravityX}{\tan(\frac{\omega}{2})\times GravityY})&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Implementation Result&lt;/strong&gt;
+After setting up APP, the interface shows the effect of merging algorithms.&lt;/p&gt;
+
+&lt;p&gt;　　　&lt;img src=&quot;http://ww4.sinaimg.cn/large/6e302d8bgw1f4f24jrkf7j20bo0len07.jpg&quot; alt=&quot;Result&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;　　　&lt;img src=&quot;http://ww3.sinaimg.cn/large/6e302d8bgw1f4f25kw9kwj20bo0leq68.jpg&quot; alt=&quot;Result&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;follow-up&quot;&gt;FOLLOW UP&lt;/h2&gt;
+
+&lt;p&gt;The merging algorithm based on &lt;strong&gt;CLLocation&lt;/strong&gt; and &lt;strong&gt;CMMotion&lt;/strong&gt;. Data from hardware is needed to pre-process before using. For instance, when the device in a horizontal posture, the data should be modified before calculation.&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>Shipu Wang</name><email>shipu.wsp@gmail.com</email></author><category term="Augmented" /><category term="Reality," /><category term="Navigation," /><category term="iOS" /><summary>2016 is the initial year of Virtual Reality. Influenced by the trends, many technical companies devote themselves to the revolution of traditional interaction. Accompanied with the spring of smart devices, data management, data retrieval and algorithm are all enhanced in a stable pace. In another part, with the popularization of smart phones, the cost of technology in life become lower and lower. According to these points, the paper uses the combination of the technology of Augmented Reality and iOS development to realize a simple Augmented Reality on iPhone platform…</summary></entry></feed>
