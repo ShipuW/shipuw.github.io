@@ -3,7 +3,6 @@ layout: post
 title: iOS Core Data
 date: 2017-01-07
 ---
-# iOS Core Data #
 
 Welcome to Core Data! In this tutorial, you’ll write your very first Core Data app. You’ll see how easy it is to get started with all the resources provided in Xcode, from starter code templates to the Data Model editor.
 

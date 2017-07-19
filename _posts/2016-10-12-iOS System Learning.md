@@ -3,7 +3,6 @@ layout: post
 title: iOS System Learning
 date: 2016-06-04
 ---
-# iOS System Learning #
 
 ##### About
 

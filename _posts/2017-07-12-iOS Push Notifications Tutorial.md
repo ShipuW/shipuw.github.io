@@ -3,7 +3,6 @@ layout: post
 title: iOS Push Notifications Tutorial
 date: 2017-07-12
 ---
-# iOS Push Notifications Tutorial #
 
 Original Link : https://www.raywenderlich.com/156966/push-notifications-tutorial-getting-started
 

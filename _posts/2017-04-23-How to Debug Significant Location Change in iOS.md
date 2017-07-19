@@ -4,8 +4,6 @@ title: How to Debug Significant Location Change in iOS
 date: 2017-04-23
 ---
 
-# How to Debug Significant Location Change in iOS
-
 Original Link : https://pawanpoudel.svbtle.com/how-to-debug-significant-location-change-code-in-ios
 
 If an app has registered to listen for [significant location change notifications](http://goo.gl/1iE9PN), but is subsequently terminated, iOS will automatically relaunch the app into the background, if a new notification arrives. iOS generates significant location change notifications as soon as the device moves 500 meters or more from its previous notification location. These notifications don’t arrive more frequently than once every five minutes. Therefore, it could be challenging to test or debug code that handles these notifications without driving around with your device.
