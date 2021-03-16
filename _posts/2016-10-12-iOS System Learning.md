@@ -664,6 +664,7 @@ Awesome-iOS is an amazing list for people who need a certain feature on their ap
 - [SwiftOCR](https://github.com/garnele007/SwiftOCR) - Fast and simple OCR library written in Swift :large_orange_diamond:
 - [QR Code Scanner](http://www.appcoda.com/qr-code-ios-programming-tutorial/) - QR Code implementation.
 - [QRCode](https://github.com/aschuch/QRCode) - A QRCode generator written in Swift. :large_orange_diamond:
+- [QRCode Generator](https://www.websiteplanet.com/webtools/free-qr-code-generator/) - A visualized onling QRCode generator with many customization options. (Thanks for [Amelia](mailto:ameliabrunolh@gmail.com))
 
 ##### PDF
 
